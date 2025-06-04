@@ -41,6 +41,19 @@ document.addEventListener("DOMContentLoaded", () => {
           participantsHtml = `<p><strong>Inscritos:</strong> Nenhum inscrito ainda.</p>`;
         }
 
+        // Monta a lista de participantes
+        let participantsHtml = "";
+        if (details.participants.length > 0) {
+          participantsHtml = `
+            <div class="participants-title">Inscritos:</div>
+            <ul class="participants-list">
+              ${details.participants.map(email => `<li class="participant-item">${email}</li>`).join("")}
+            </ul>
+          `;
+        } else {
+          participantsHtml = `<div class="no-participants">Nenhum participante inscrito ainda.</div>`;
+        }
+
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
